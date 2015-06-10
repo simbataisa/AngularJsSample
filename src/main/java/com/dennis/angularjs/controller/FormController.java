@@ -1,10 +1,11 @@
-package nl.trifork.ngtest.i18n;
+package com.dennis.angularjs.controller;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/form.do")
 public class FormController {
+
+	private static final Logger log = Logger.getLogger(FormController.class);
 
 	static class FormData {
 		public String firstName;
@@ -38,7 +41,7 @@ public class FormController {
 		List<Message> messages = new ArrayList<Message>();
 		messages.addAll(validateFirstName(formData.firstName));
 		messages.addAll(validateAge(formData.age));
-		System.out.println("Teting..........");
+		log.debug("Teting..........");
 		if (messages.isEmpty()) {
 			System.out.println("Processing validated form.");
 			System.out.println("First name: " + formData.firstName);

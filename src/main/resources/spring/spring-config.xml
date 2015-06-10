@@ -9,7 +9,7 @@
 		 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-	<context:component-scan base-package="nl.trifork.ngtest" />
+	<context:component-scan base-package="com.dennis.angularjs.controller" />
 	
 	<mvc:annotation-driven />
 	

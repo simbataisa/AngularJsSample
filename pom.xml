@@ -18,14 +18,18 @@
         <maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.2</maven-war-plugin.version>
 
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- Build dependencies                                      -->
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <jetty.version>6.1.26</jetty.version>
+        <maven-war-plugin.version>2.5</maven-war-plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
         <!-- Version dependencies when used in multiple dependencies -->
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-        <maven-celerio-plugin.outputDir>${project.basedir}</maven-celerio-plugin.outputDir>
+        <target.outputDir>${project.basedir}</target.outputDir>
     </properties>
 
     <dependencies>
@@ -67,6 +71,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -79,14 +90,6 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
             <plugin>
@@ -114,11 +117,11 @@
                 <!-- http://maven.apache.org/plugins/maven-war-plugin/ -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <webResources>
                         <resource>
-                            <directory>${maven-celerio-plugin.outputDir}/src/main/webapp</directory>
+                            <directory>${target.outputDir}/src/main/webapp</directory>
                         </resource>
                     </webResources>
                 </configuration>
